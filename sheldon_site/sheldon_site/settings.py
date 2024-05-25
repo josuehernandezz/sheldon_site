@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -24,8 +25,10 @@ SECRET_KEY = 'django-insecure-e7^obl1q%6u_k-2v+1i0l7d!&y(t*2!#=e9a-n__6i8ze6m8^d
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+# DEBUG = False
 
 ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = ['0.0.0.0']
 
 
 # Application definition
@@ -66,6 +69,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'main.context_processors.navbar_context',
             ],
         },
     },
@@ -119,7 +123,19 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
+# The absolute path to the directory where static files will be copied to when the 'collectstatic' management command is executed.
+# STATIC_ROOT = BASE_DIR / "staticfiles"
+
+# Additional directories where Django will look for static files, in addition to the 'static' directory within each installed app.
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static/'),
+]
+
+# The URL prefix for static files served by the STATICFILES_DIRS or the staticfiles app when using the 'runserver' management command.
 STATIC_URL = 'static/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+MEDIA_URL = '/media/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
@@ -129,4 +145,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 COMPRESS_ROOT = BASE_DIR / 'static'
 COMPRESS_ENABLED = True
+# COMPRESS_OFFLINE = True
 STATICFILES_FINDERS = ('compressor.finders.CompressorFinder',)

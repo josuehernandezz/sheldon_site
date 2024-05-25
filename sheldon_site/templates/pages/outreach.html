@@ -1,0 +1,19 @@
+<!-- templates/research.html -->
+
+{% extends "_base.html" %}
+
+{% block title %}
+  {{ title }}
+{% endblock %}
+
+{% block content %}
+<h1 class="text-3xl text-uci-blue-dk mx-auto px-4 pt-2 font-semibold">{{ title|title }}</h1>
+
+  <p>
+    This is a test.
+  </p>
+
+  <p>
+    {{request.path}}
+  </p>
+{% endblock %}

@@ -1,0 +1,19 @@
+<!-- templates/index.html -->
+
+{% extends "_base.html" %}
+{% load static %}
+
+{% block title %}
+  {{ title }}
+{% endblock %}
+
+{% block content %}
+
+<h1 class="{{ title_style }}">{{ title|title }}</h1>
+
+  {% include "blocks/carousel/carousel.html" %}
+  
+  <div id="num_pics" style="display: none;">{{ num_pics }}</div>
+  <script src="{% static 'js/slider.js' %}"></script>
+  
+  {% endblock %}

@@ -1,0 +1,58 @@
+
+<nav class="bg-uci-blue-lt dark:bg-gray-900 border-yellow-300 border-b-4 dark:border-gray-700">
+  <div class="
+  flex flex-wrap
+  justify-around
+  items-center 
+  max-w-screen-xl 
+  mx-auto 
+  p-4">
+    <!-- Logo Link -->
+    <a href="{% url 'home' %}" class="flex flex-col items-center group">
+      <!-- <img src="https://flowbite.com/docs/images/logo.svg" class="h-8" alt="Flowbite Logo" /> -->
+      <span class="block self-center text-4xl font-extrabold whitespace-nowrap        
+      text-uci-white 
+      dark:bg-uci-blue-dk group-hover:text-uci-yellow">
+          Sheldon Group
+      </span>
+      <div class="items-center">
+          <span class="text-uci-white font-extralight text-center group-hover:text-uci-yellow">University of California, Irvine</span>
+      </div>
+    </a>
+    <!-- Hamburger Menu -->
+    <button data-collapse-toggle="navbar-dropdown" type="button" 
+    class="inline-flex items-center justify-center text-sm
+    p-2 w-10 h-10 nav-limit:hidden
+     text-uci-yellow dark:text-gray-400
+     hover:bg-gray-100 dark:hover:bg-gray-700
+     focus:ring-gray-200 dark:focus:ring-gray-600
+     rounded-lg focus:outline-none focus:ring-2"
+     aria-controls="navbar-dropdown" aria-expanded="false">
+        <span class="sr-only">Open main menu</span>
+        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
+        </svg>
+    </button>
+
+    <!-- Nav-bar -->
+    <div class="hidden w-full md:w-auto nav-limit:block nav-limit:w-auto" id="navbar-dropdown">
+      <ul class="flex flex-col font-medium
+      justify-center
+      md:mt-2 mt-2
+      md:p-3 p-2
+      md:space-x-8 
+      md:flex-row
+      bg-uci-blue-dk dark:bg-gray-800 
+      border
+      border-uci-yellow
+      rounded-lg
+      rtl:space-x-reverse">
+
+          {% include "blocks/navbar/narbarparse.html" %}
+
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- md:bg-uci-blue-dk md:dark:bg-gray-900 -->

@@ -1,0 +1,29 @@
+<!-- templates/research.html -->
+
+{% extends "_base.html" %}
+
+{% block title %}
+  {{ title }}
+{% endblock %}
+
+{% block content %}
+<h1 class="text-3xl text-uci-blue-dk mx-auto px-4 pt-2 font-semibold">{{ title|title }}</h1>
+
+<div class="container mx-auto px-4 py-8">
+    <!-- <h2 class="text-3xl font-semibold mb-4 text-uci-blue-dk">Meet The Team</h2> -->
+    <div class="grid grid-cols-2 lg:grid-cols-3 gap-4">
+        {% for current_lab_member in current_lab_members %}
+        <div class="border border-gray-200 shadow-md rounded-md overflow-hidden" style="height: 100%;">
+            <img class="w-full h-auto object-cover" src="{{ current_lab_member.image.url }}" alt="{{ current_lab_member.name }} Image">
+            <div class="p-4">
+                <h3 class="text-xl font-semibold mb-2">{{ current_lab_member.name }}</h3>
+                <p class="text-gray-600 text-sm mb-2">{{ current_lab_member.title }}</p>
+                <p class="mb-2"><a href="mailto:{{ current_lab_member.email }}" class="text-blue-500">{{ current_lab_member.email }}</a></p>
+                <p class="mb-4">{{ current_lab_member.bio }}</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}
