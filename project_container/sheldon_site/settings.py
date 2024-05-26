@@ -31,7 +31,7 @@ dotenv.load_dotenv(env_path)
 SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv('DEBUG')
+DEBUG = False
 # DEBUG = False
 
 # ALLOWED_HOSTS = []
@@ -134,7 +134,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 # The absolute path to the directory where static files will be copied to when the 'collectstatic' management command is executed.
-# STATIC_ROOT = BASE_DIR / "staticfiles"
+STATIC_ROOT = BASE_DIR / "staticfiles"
 
 # Additional directories where Django will look for static files, in addition to the 'static' directory within each installed app.
 STATICFILES_DIRS = [
@@ -155,5 +155,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 COMPRESS_ROOT = BASE_DIR / 'static'
 COMPRESS_ENABLED = True
-# COMPRESS_OFFLINE = True
 STATICFILES_FINDERS = ('compressor.finders.CompressorFinder',)
+# COMPRESS_OFFLINE = True
