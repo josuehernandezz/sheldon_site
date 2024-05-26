@@ -1,0 +1,11 @@
+/* static/src/input.css */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Define custom CSS classes */
+.my-custom-outline {
+    -webkit-text-stroke-width: 1px; /* Control the thickness of the outline */
+    -webkit-text-stroke-color: #facc15; /* Color of the outline */
+}
