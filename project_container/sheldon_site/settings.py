@@ -32,14 +32,18 @@ dotenv.load_dotenv(env_path)
 SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 # DEBUG = False
 
 # ALLOWED_HOSTS = []
 ALLOWED_HOSTS = [
     '0.0.0.0',
     '127.0.0.1',
-    'clownfish-app-5yn9l.ondigitalocean.app'
+    '169.234.12.96',
+    'clownfish-app-5yn9l.ondigitalocean.app',
+    '192.168.1.210',
+    '169.234.1.162',
+    '169.234.30.208',
     ]
 
 # Application definition
@@ -135,12 +139,12 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'collected_static')
+STATIC_URL = 'static/'
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static_files')
+    os.path.join(BASE_DIR, 'static')
 ]
-STATIC_URL = 'static/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 MEDIA_URL = 'media/'
@@ -151,8 +155,8 @@ MEDIA_URL = 'media/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 COMPRESS_ENABLED = True
+# COMPRESS_OFFLINE = True
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
     'compressor.finders.CompressorFinder')
-# COMPRESS_OFFLINE = True

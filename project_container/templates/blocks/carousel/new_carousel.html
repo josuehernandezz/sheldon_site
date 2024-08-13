@@ -1,0 +1,73 @@
+<div class="relative overflow-hidden bg-gray-200">
+    <div id="carousel" class="flex transition-transform duration-500 ease-in-out">
+        {% for image in carousel_images %}
+        <div class="carousel-slide w-full {% if forloop.first %}block{% else %}hidden{% endif %}">
+            <img src="{{ image.image.url }}" alt="{{ image.alt }}" class="w-full">
+        </div>
+        {% endfor %}
+    </div>
+    <button id="prevBtn" class="absolute top-1/2 left-4 transform -translate-y-1/2 bg-white p-2 rounded-full shadow-md z-10">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+        </svg>
+    </button>
+    <button id="nextBtn" class="absolute top-1/2 right-4 transform -translate-y-1/2 bg-white p-2 rounded-full shadow-md z-10">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+        </svg>
+    </button>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const carousel = document.getElementById('carousel');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const slides = carousel.getElementsByClassName('carousel-slide');
+    const numSlides = {{ num_pics }};
+    let currentIndex = 0;
+    let intervalId;
+
+    // Function to show a specific slide
+    function showSlide(index) {
+        for (let i = 0; i < slides.length; i++) {
+            slides[i].classList.add('hidden');
+        }
+        slides[index].classList.remove('hidden');
+    }
+
+    // Function to move carousel to next slide
+    function moveNext() {
+        currentIndex = (currentIndex + 1) % numSlides;
+        showSlide(currentIndex);
+    }
+
+    // Function to move carousel to previous slide
+    function movePrev() {
+        currentIndex = (currentIndex - 1 + numSlides) % numSlides;
+        showSlide(currentIndex);
+    }
+
+    // Function to start interval for automatic slide change
+    function startInterval() {
+        clearInterval(intervalId);
+        intervalId = setInterval(moveNext, 3000); // Change slide every 3 seconds
+    }
+
+    // Event listeners for previous and next buttons
+    prevBtn.addEventListener('click', function() {
+        movePrev();
+        startInterval();
+    });
+
+    nextBtn.addEventListener('click', function() {
+        moveNext();
+        startInterval();
+    });
+
+    // Show the initial slide and start the interval
+    showSlide(currentIndex);
+    startInterval();
+});
+
+</script>

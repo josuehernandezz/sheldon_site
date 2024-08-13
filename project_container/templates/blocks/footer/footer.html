@@ -1,0 +1,56 @@
+{% load static %}
+
+<footer class="bg-white dark:bg-gray-900">
+    <div class="mx-auto w-full  p-4 py-6 lg:py-8">
+        <div class="md:flex md:justify-between">
+            <!-- Logo -->
+          <div class="mb-6 footer-limit:mr-5 md:mb-0">
+              <a href="{% url 'home' %}" class="flex items-center">
+                  <img src="{% static 'img/uc-irvine-logo.gif' %}" class="h-20 me-3" alt="UCI Logo"/>
+                  <div class="flex flex-col items-center">
+                    <span class="text-2xl font-semibold whitespace-nowrap dark:text-white">
+                        Sheldon
+                    </span>
+                    <span class="text-2xl font-semibold whitespace-nowrap dark:text-white">
+                        Group
+                    </span>
+                </div>
+                
+              </a>
+          </div>
+          <div class="flex grid-cols-1 gap-8 sm:justify-center md:mr-10">
+              <!-- Section 3 -->
+              <div>
+                    <h2 class="mb-4 text-sm font-semibold text-gray-900 uppercase dark:text-white">
+                        Principle Investigator
+                    </h2>
+                  <ul class="text-gray-500 dark:text-gray-400 font-normal text-center">
+                      <li class="mb-2">
+                          <!-- <a href="#" class="hover:underline"></a> -->
+                          <p>Prof. Matthew Sheldon</p>
+                      </li>
+                      <!-- <li>
+                          <a href="#" class="hover:underline">909-444-4444</a>
+                      </li> -->
+                      <li>
+                        <a href="mailto:m.sheldon@uci.edu" target="_blank" class="hover:underline">m.sheldon@uci.edu</a>
+                    </li>
+                  </ul>
+              </div>
+          </div>
+      </div>
+      <!-- Line -->
+      <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
+
+      <!-- Subsection -->
+      <div class="sm:flex sm:items-center sm:justify-between">
+          <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">
+            © 2024 
+            <a href="#" class="hover:underline">
+                SheldonGroup
+            </a>
+                . All Rights Reserved.
+          </span>
+      </div>
+    </div>
+</footer>

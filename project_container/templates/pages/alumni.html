@@ -9,21 +9,112 @@
 {% block content %}
 <h1 class="text-3xl text-uci-blue-dk mx-auto px-4 pt-2 font-semibold">{{ title|title }}</h1>
 
-  <div class="container mx-auto px-4 py-8">
-    <!-- <h2 class="text-3xl font-semibold mb-4">Meet The Team</h2> -->
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
-        {% for alumnus in alumni %}
-        <div class="border border-gray-200 shadow-md rounded-md overflow-hidden" style="height: 100%;">
-            <img class="w-full h-auto object-cover" src="{{ alumnus.image.url }}" alt="{{ alumnus.name }} Image">
-            <div class="p-4">
-                <h3 class="text-xl font-semibold mb-2">{{ alumnus.name }}</h3>
-                <p class="text-gray-600 text-sm mb-2">{{ alumnus.title }}</p>
-                <p class="mb-2"><a href="mailto:{{ alumnus.email }}" class="text-blue-500">{{ alumnus.email }}</a></p>
-                <p class="mb-4">{{ alumnus.bio }}</p>
-            </div>
-        </div>
-        {% endfor %}
-    </div>
-</div>
+<div class="relative overflow-x-auto p-5">
+  <!-- POST-DOCS -->
+  <h2 class="text-2xl text-uci-blue-lt mx-auto pl-5 px-4 pt-8 font-semibold">POST-DOCS</h2>
+  <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+        <tr>
+            <th scope="col" class="px-6 py-3">
+                  Name
+            </th>
+            <th scope="col" class="px-6 py-3">
+                  Year Joined
+            </th>
+            <th scope="col" class="px-6 py-3">
+                Year Finished
+            </th>
+        </tr>
+    </thead>
 
+  {% for post_doc in post_docs %}
+  <tbody>
+    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+          Dr. {{ post_doc.name }}
+        </th>
+        <td class="px-6 py-4">
+          {{ post_doc.year_joined }}
+        </td>
+        <td class="px-6 py-4">
+          {{ post_doc.year_finished }}
+        </td>
+    </tr>
+</tbody>
+{% endfor %}
+ </table>
+
+
+ <!-- GRAD STUDENTS -->
+ <h2 class="text-2xl text-uci-blue-lt mx-auto pl-5 px-4 pt-8 font-semibold">GRADUATE STUDENTS</h2>
+  <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+      <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+          <tr>
+              <th scope="col" class="px-6 py-3">
+                    Name
+              </th>
+              <th scope="col" class="px-6 py-3">
+                    Year Joined
+              </th>
+              <th scope="col" class="px-6 py-3">
+                  Year Finished
+              </th>
+              <th scope="col" class="px-6 py-3">
+                  Awarded
+              </th>
+          </tr>
+      </thead>
+    {% for grad in grads %}
+      <tbody>
+          <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+              <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                {% if grad.title == 'Ph.D' %}
+                Dr.
+              {% endif %}
+              {{ grad.name }}
+              
+              </th>
+              <td class="px-6 py-4">
+                {{ grad.year_joined }}
+              </td>
+              <td class="px-6 py-4">
+                {{ grad.year_finished }}
+              </td>
+              <td class="px-6 py-4">
+                {{ grad.title }}
+              </td>
+          </tr>
+      </tbody>
+    {% endfor %}
+  </table>
+
+<!-- UNDERGRADUATE STUDENTS -->
+<h2 class="text-2xl text-uci-blue-lt mx-auto pl-5 px-4 pt-8 font-semibold">UNDERGRADUATE STUDENTS</h2>
+<table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+  <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+      <tr>
+          <th scope="col" class="px-6 py-3">
+                Name
+          </th>
+          <th scope="col" class="px-6 py-3">
+                Year Joined
+          </th>
+      </tr>
+  </thead>
+{% for undergrad in undergrads %}
+  <tbody>
+      <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+          <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+            {{ undergrad.name }}
+          </th>
+          <td class="px-6 py-4">
+            {{ undergrad.year_joined }}
+          </td>
+      </tr>
+  </tbody>
+{% endfor %}
+</table>
+
+<!-- HIGH SCHOOL STUDENTS -->
+</div>
 {% endblock %}

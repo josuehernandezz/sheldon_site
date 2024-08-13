@@ -1,6 +1,6 @@
-<div id="default-carousel" class="relative w-full" data-carousel="slide">
+<div id="default-carousel" class="relative" data-carousel="slide">
     <!-- Carousel wrapper -->
-    <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
+    <div class="relative h-56 md:h-96 overflow-hidden rounded-lg">
         <!-- Carousel items -->
 
         <li data-target="#carouselExampleIndicators" data-slide-to="{{ forloop.counter0 }}" {% if forloop.first %} class="active" {% endif %}></li>
@@ -8,16 +8,15 @@
         {% for index, image in carousel_images_with_index %}
         <div class="{% if index == 0 %}block{% else %}hidden{% endif %} duration-700 ease-in-out" data-carousel-item>
             <img src="{{ image.image.url }}" 
-            class="absolute block h-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="{{ image.alt }}">
+            class="absolute h-full  -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="{{ image.alt }}">
         </div>
         {% endfor %}
 
     </div>
     
     <!-- Slider indicators -->
-    <div id="sliderIndicators" class="absolute bg-black opacity-70 rounded-md p-2 z-30 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3 rtl:space-x-reverse">
-        <!-- Indicators will be dynamically added here -->
-    </div>
+    <!-- <div id="sliderIndicators" class="absolute bg-uci-blue-dk opacity-50 rounded-md
+    p-1 z-30 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3 rtl:space-x-reverse"></div> -->
 
     <!-- Slider controls -->
     <button type="button" class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>

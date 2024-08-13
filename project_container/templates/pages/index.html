@@ -8,12 +8,36 @@
 {% endblock %}
 
 {% block content %}
+  <!-- Intro Content -->
+  {% include "blocks/content/text-img.html" %}
 
-<h1 class="{{ title_style }}">{{ title|title }}</h1>
+  <!-- Line -->
+  <hr class="h-px my-8 mx-2 sm:mx-60 border-2 border-uci-blue-lt rounded-md">
 
-  {% include "blocks/carousel/carousel.html" %}
+  <!-- Carousel -->
+  {% if carousel_images %}
+    {% include "blocks/carousel/carousel_old.html" %}
+  {% else %}
+  {% endif %}
+
+  <!-- Line -->
+  <hr class="h-px my-8 mx-60 border-2 border-uci-blue-lt rounded-md">
+
+  <!-- Cards -->
+  {% include "blocks/content/card.html" %}
+
+  <!-- Group Photo Section -->
+  <div class="container mx-auto px-4 py-8">    
+    <div>
+      <h1 class="text-3xl text-uci-blue-dk mx-auto px-4 pt-2 font-semibold">
+        Our Group
+      </h1>
   
+      <div class="mx-auto my-5 flex justify-center items-center">
+        <img class="rounded-md border-2 border-uci-blue-lt w-full md:w-4/5" src="{{ latest_group_photo.image.url }}" alt="Group Photo">
+      </div>
+  </div>
+
   <div id="num_pics" style="display: none;">{{ num_pics }}</div>
   <script src="{% static 'js/slider.js' %}"></script>
-  
   {% endblock %}

@@ -1,0 +1,60 @@
+
+<section id="animated-section" class="bg-white dark:bg-gray-900">
+    <div class="gap-16 items-center py-8 px-4 mx-auto max-w-screen-xl lg:grid lg:grid-cols-2 lg:py-16 lg:px-6">
+        <div class="font-light text-gray-500 sm:text-lg dark:text-gray-400">
+
+            <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-uci-blue-dk dark:text-uci-blue-lt">
+                Our Research
+            </h2>
+            
+            <p class="mb-4">
+                Our research considers fundamental questions of optical energy conversion relating to 
+                plasmonic and inorganic nanoscale materials. Our experiments are principally designed 
+                to identify and optimize unique nanoscale phenomena useful for solar energy conversion, 
+                as well as related opportunities at the intersection of nanophotonics and chemistry for 
+                broad application beyond the scope of solar energy.
+            </p>
+            <p>
+                The current world record solar cell operates at 44.4% power conversion efficiency. Thermodynamic 
+                analyses indicate that much higher efficiency is theoretically possible. Indeed, technical challenges,
+                rather than laws of nature, limit current solar power convertors from achieving the maximum thermodynamic 
+                efficiency of 95%.
+            </p>
+        </div>
+        <div class="grid grid-cols-2 gap-4 mt-8">
+            <div class="">
+                <img class="w-full rounded-lg hover:scale-105 transition-transform duration-500" src="{{ content_images.0.image.url }}" alt="{{ content_images.0.alt }}">
+                <p class="text-center font-semibold text-uci-blue-lt">{{ content_images.0.alt }}</p>
+            </div>
+            <div>
+                <img class="mt-4 w-full lg:mt-10 rounded-lg hover:scale-105 transition-transform duration-500" src="{{ content_images.1.image.url }}" alt="{{ content_images.1.alt }}">
+                <p class="text-center font-semibold text-uci-blue-lt">{{ content_images.1.alt }}</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    @keyframes fadeAndSlideUp {
+        0% {
+            opacity: 0;
+            transform: translateY(100%);
+        }
+        50% {
+            opacity: 0.5; /* Adjust the opacity at the midpoint of the animation */
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var section = document.getElementById("animated-section");
+        section.classList.remove("translate-y-full", "opacity-0"); // Remove the initial translate-y-full and opacity-0 classes
+        section.classList.add("opacity-100"); // Add opacity-100 to ensure the section is fully visible
+        section.style.animation = "fadeAndSlideUp 1s ease-in-out forwards"; // Apply the fadeAndSlideUp animation
+    });
+</script>

@@ -7,10 +7,140 @@
 {% endblock %}
 
 {% block content %}
+
 <h1 class="text-3xl text-uci-blue-dk mx-auto px-4 pt-2 font-semibold">{{ title|title }}</h1>
 
-  <p>
-    {{request.path}}
-  </p>
+<div class="container justify-center mx-auto px-4 py-8">
+  <!-- Filters -->
+  <div class="grid grid-cols-1 space-y-4 md:flex md:space-x-4 md:justify-center">
+    <!-- Order by publication number -->
+    <label for="number-filter" class="font-semibold">Order by:</label>
+    <select id="number-filter" class="border border-gray-300 rounded px-2 py-1">
+      <option value="desc">Descending</option>
+      <option value="asc">Ascending</option>
+    </select>
+    <!-- Filter by title -->
+    <input type="text" id="title-filter" class="border border-gray-300 rounded px-2 py-1" placeholder="Search">
+    <!-- Filter by year -->
+    <select id="year-select" class="border border-gray-300 rounded px-2 py-1">
+      <option value="">All Years</option>
+    </select>
+  </div>
+  
+  <!-- Publications -->
+  <div class="flex container justify-center mx-auto px-4 py-8">
+    <ol id="publications-list">
+      {% for publication in publications %}
+
+
+  {% if publication.authors and publication.title %}
+    <li class="mb-3" data-year="{{ publication.year }}">
+      <p class="inline dark:text-uci-white">
+        <span>{{ publication.publication_number }}.</span>
+        {{ publication.authors }}.
+
+        {% if publication.url %}
+          <a href="{{ publication.url }}" target="_blank" class="text-blue-500">
+            "{{ publication.title }}"
+          </a>
+        {% else %}
+          <a href="#" class="text-red-500">
+            "{{ publication.title }}"
+        </a>
+        {% endif %}
+        
+        
+        {% if publication.journal %}
+          <em class="ml-2 font-semibold">{{ publication.journal }}</em>
+          {% if publication.year %}
+            {{ publication.year }},
+          {% endif %}
+          {% if publication.volume %}
+            {{ publication.volume }},
+          {% endif %}
+          {% if publication.issue %}
+            ( {{ publication.issue }} ),
+          {% endif %}
+          {% if publication.pages %}
+            {{ publication.pages }}
+          {% endif %}
+        {% else %}
+          <em class="ml-2 font-semibold">(submitted)</em>
+        {% endif %}
+      </p>
+    </li>
+  {% endif %}
+{% endfor %}
+
+    </ol>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const publicationsList = document.getElementById('publications-list');
+  const numberFilter = document.getElementById('number-filter');
+  const titleFilter = document.getElementById('title-filter');
+  const yearSelect = document.getElementById('year-select');
+
+  // Extract unique years from publications and populate year filter dropdown
+  const years = [...new Set([...publicationsList.querySelectorAll('li')].map(li => li.getAttribute('data-year')))];
+  years.sort((a, b) => {
+    if (a === 'None') return -1; // 'None' should be placed at the top
+    if (b === 'None') return 1;
+    return b - a; // Sorting from most recent to oldest year
+  });
+
+  yearSelect.innerHTML = '<option value="">Year</option>'; // Reset year select
+  years.forEach(year => {
+    const option = document.createElement('option');
+    option.value = year;
+    option.textContent = year;
+    yearSelect.appendChild(option);
+  });
+
+  // Function to filter items based on selected year
+  function filterByYear(selectedYear) {
+    const listItems = Array.from(publicationsList.querySelectorAll('li'));
+    listItems.forEach(item => {
+      const year = item.getAttribute('data-year');
+      const title = item.querySelector('.inline').textContent.toLowerCase();
+      const displayByYear = selectedYear === '' || year === selectedYear;
+      const displayByTitle = title.includes(titleFilter.value.trim().toLowerCase());
+      item.style.display = displayByYear && displayByTitle ? 'block' : 'none';
+    });
+  }
+
+  // Filter by year
+  yearSelect.addEventListener('change', function() {
+    const selectedYear = yearSelect.value;
+    filterByYear(selectedYear);
+  });
+
+  // Function to sort items based on publication number
+  function sortByNumber(order) {
+    const listItems = Array.from(publicationsList.querySelectorAll('li'));
+    listItems.sort(function(a, b) {
+      const numberA = parseInt(a.querySelector('span').textContent);
+      const numberB = parseInt(b.querySelector('span').textContent);
+      return order === 'asc' ? numberA - numberB : numberB - numberA;
+    });
+    listItems.forEach(item => publicationsList.appendChild(item));
+  }
+
+  // Filter by publication number
+  numberFilter.addEventListener('change', function() {
+    const order = numberFilter.value;
+    sortByNumber(order);
+  });
+
+  // Filter by title
+  titleFilter.addEventListener('input', function() {
+    const query = titleFilter.value.trim().toLowerCase();
+    filterByYear(yearSelect.value); // Apply filter by year again after title filter changes
+  });
+});
+
+</script>
 
 {% endblock %}

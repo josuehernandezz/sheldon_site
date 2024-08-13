@@ -7,19 +7,36 @@
 {% endblock %}
 
 {% block content %}
-<h1 class="text-3xl text-uci-blue-dk mx-auto px-4 pt-2 font-semibold">{{ title|title }}</h1>
+<!-- <h1 class="text-3xl text-uci-blue-dk mx-auto px-4 pt-2 font-semibold">{{ title|title }}</h1> -->
 
 <div class="container mx-auto px-4 py-8">
-    <!-- <h2 class="text-3xl font-semibold mb-4 text-uci-blue-dk">Meet The Team</h2> -->
-    <div class="grid grid-cols-2 lg:grid-cols-3 gap-4">
+    <h2 class="text-3xl font-semibold mb-4 text-uci-blue-dk">Principal Investigator</h2>
+    
+    <div class="flex flex-wrap">
+        <div class="flex mb-10 w-full md:w-1/4">
+            <div class="w-full border dark:bg-slate-900 border-gray-200 shadow-md rounded-md overflow-scroll" style="height: 100%;">
+                <img class="w-full h-80 object-cover" src="{{ principal_investigator.image.url }}" alt="{{ principal_investigator.name }} Image">
+                <div class="p-4">
+                    <h3 class="text-xl dark:text-uci-white font-semibold mb-2">{{ principal_investigator.name }}</h3>
+                    <p class="text-gray-600 dark:text-slate-300 text-sm mb-2">{{ principal_investigator.title }}</p>
+                    <p class="mb-2"><a href="mailto:{{ principal_investigator.email }}" class="text-blue-500">{{ principal_investigator.email }}</a></p>
+                    <p class="mb-4 dark:text-uci-white">{{ principal_investigator.bio }}</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    
+    <h2 class="text-3xl font-semibold mb-4 text-uci-blue-dk">Graduate Students</h2>
+    <div class="grid grid-cols-1 gap-3 md:grid-cols-3">
         {% for current_lab_member in current_lab_members %}
-        <div class="border border-gray-200 shadow-md rounded-md overflow-hidden" style="height: 100%;">
-            <img class="w-full h-auto object-cover" src="{{ current_lab_member.image.url }}" alt="{{ current_lab_member.name }} Image">
+        <div class="border dark:bg-slate-900 border-gray-200 shadow-md rounded-md overflow-scroll" style="height: 100%;">
+            <img class="w-full h-72 object-cover" src="{{ current_lab_member.image.url }}" alt="{{ current_lab_member.name }} Image">
             <div class="p-4">
-                <h3 class="text-xl font-semibold mb-2">{{ current_lab_member.name }}</h3>
-                <p class="text-gray-600 text-sm mb-2">{{ current_lab_member.title }}</p>
+                <h3 class="text-xl dark:text-uci-white font-semibold mb-2">{{ current_lab_member.name }}</h3>
+                <p class="text-gray-600 dark:text-slate-300 text-sm mb-2">{{ current_lab_member.title }}</p>
                 <p class="mb-2"><a href="mailto:{{ current_lab_member.email }}" class="text-blue-500">{{ current_lab_member.email }}</a></p>
-                <p class="mb-4">{{ current_lab_member.bio }}</p>
+                <p class="mb-4 dark:text-uci-white">{{ current_lab_member.bio }}</p>
             </div>
         </div>
         {% endfor %}

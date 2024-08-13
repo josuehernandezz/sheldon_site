@@ -1,16 +1,16 @@
 
 <nav class="bg-uci-blue-lt dark:bg-gray-900 border-yellow-300 border-b-4 dark:border-gray-700">
   <div class="
-  flex flex-wrap
-  justify-around
-  items-center 
-  max-w-screen-xl 
-  mx-auto 
-  p-4">
+    flex flex-wrap
+    justify-around
+    items-center 
+    max-w-screen-xl 
+    mx-auto 
+    p-4">
     <!-- Logo Link -->
     <a href="{% url 'home' %}" class="flex flex-col items-center group">
       <!-- <img src="https://flowbite.com/docs/images/logo.svg" class="h-8" alt="Flowbite Logo" /> -->
-      <span class="block self-center text-4xl font-extrabold whitespace-nowrap        
+      <span class="block self-center text-4xl font-semibold whitespace-nowrap        
       text-uci-white 
       dark:bg-uci-blue-dk group-hover:text-uci-yellow">
           Sheldon Group
@@ -43,12 +43,12 @@
       md:space-x-8 
       md:flex-row
       bg-uci-blue-dk dark:bg-gray-800 
-      border
-      border-uci-yellow
+      
+      
       rounded-lg
       rtl:space-x-reverse">
 
-          {% include "blocks/navbar/narbarparse.html" %}
+          {% include "blocks/navbar/navbarparse.html" %}
 
       </ul>
     </div>

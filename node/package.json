@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "dev": "npx tailwindcss -i ../sheldon_site/static/input.css -o ../sheldon_site/static/output.css --watch"
+    "dev": "npx tailwindcss -i ../project_container/static/input.css -o ../project_container/static/output.css --watch"
   },
   "devDependencies": {
     "tailwindcss": "^3.4.3"
