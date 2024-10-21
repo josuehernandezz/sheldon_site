@@ -1,4 +1,6 @@
 # Other
+.admin
+.ignore
 
 # Python files
 __pycache__/
