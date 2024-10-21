@@ -32,18 +32,13 @@ dotenv.load_dotenv(env_path)
 SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-# DEBUG = False
+DEBUG = False
 
 # ALLOWED_HOSTS = []
 ALLOWED_HOSTS = [
     '0.0.0.0',
-    '127.0.0.1',
-    '169.234.12.96',
-    'clownfish-app-5yn9l.ondigitalocean.app',
-    '192.168.1.210',
-    '169.234.1.162',
-    '169.234.30.208',
+    '54.176.211.214',
+    'sheldongroup.ps.uci.edu',
     ]
 
 # Application definition
@@ -154,9 +149,20 @@ MEDIA_URL = 'media/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-COMPRESS_ENABLED = True
+#COMPRESS_ENABLED = True
 # COMPRESS_OFFLINE = True
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
     'compressor.finders.CompressorFinder')
+
+
+# settings.py# Ensure all requests are redirected to HTTPS
+SECURE_SSL_REDIRECT = True# Ensure session cookies and CSRF cookies are only sent over HTTPS
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True# HSTS settings
+SECURE_HSTS_SECONDS = 31536000
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_HSTS_PRELOAD = True# Additional security settings
+SECURE_BROWSER_XSS_FILTER = True
+SECURE_CONTENT_TYPE_NOSNIFF = True

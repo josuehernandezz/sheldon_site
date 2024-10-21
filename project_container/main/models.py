@@ -54,7 +54,7 @@ class LabMember(models.Model):
     image = models.ImageField(upload_to=lab_member_img_path, blank=True, null=True)
     year_joined = models.PositiveIntegerField(blank=False, null=True)
     year_finished = models.PositiveIntegerField(blank=True, null=True)
-    position = models.CharField(max_length=2, choices=POSITION_CHOICES)
+    position = models.CharField(max_length=2, choices=POSITION_CHOICES, blank=True, null=True)
     is_alumni = models.BooleanField(null=True, blank=False)
     employer = models.CharField(max_length=350, blank=True, null=True)
 
