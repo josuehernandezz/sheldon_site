@@ -32,14 +32,18 @@ dotenv.load_dotenv(env_path)
 SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
-
-# ALLOWED_HOSTS = []
+DEBUG = os.getenv('DEBUG')
 ALLOWED_HOSTS = [
     '0.0.0.0',
     '54.176.211.214',
     'sheldongroup.ps.uci.edu',
-    ]
+]
+if DEBUG:
+    ALLOWED_HOSTS = [
+        '127.0.0.1',
+        '0.0.0.0',
+        'localhost'
+        ]
 
 # Application definition
 
@@ -149,7 +153,7 @@ MEDIA_URL = 'media/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-#COMPRESS_ENABLED = True
+# COMPRESS_ENABLED = True
 # COMPRESS_OFFLINE = True
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
@@ -157,12 +161,32 @@ STATICFILES_FINDERS = (
     'compressor.finders.CompressorFinder')
 
 
-# settings.py# Ensure all requests are redirected to HTTPS
-SECURE_SSL_REDIRECT = True# Ensure session cookies and CSRF cookies are only sent over HTTPS
+# Ensure all requests are redirected to HTTPS
+
+# Ensure session cookies and CSRF cookies are only sent over HTTPS
+SECURE_SSL_REDIRECT = True
 SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True# HSTS settings
+
+if DEBUG:
+    SECURE_SSL_REDIRECT = False
+    SESSION_COOKIE_SECURE = False
+
+# HSTS settings
+CSRF_COOKIE_SECURE = True
 SECURE_HSTS_SECONDS = 31536000
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-SECURE_HSTS_PRELOAD = True# Additional security settings
+
+if DEBUG:
+    CSRF_COOKIE_SECURE = False
+    SECURE_HSTS_SECONDS = 31536000
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = False
+
+# Additional security settings
+SECURE_HSTS_PRELOAD = True
 SECURE_BROWSER_XSS_FILTER = True
 SECURE_CONTENT_TYPE_NOSNIFF = True
+
+if DEBUG:
+    SECURE_HSTS_PRELOAD = False
+    SECURE_BROWSER_XSS_FILTER = False
+    SECURE_CONTENT_TYPE_NOSNIFF = False
