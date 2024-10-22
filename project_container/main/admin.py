@@ -4,7 +4,6 @@ from .models import CarouselImage, LabMember, Publication, GroupPhoto, ContentIm
 # Register your models here.
 
 admin.site.register(ContentImage)
-admin.site.register(CarouselImage)
 admin.site.register(Publication)
 admin.site.register(Card)
 admin.site.register(GroupPhoto)
@@ -18,3 +17,15 @@ class LabMemberAdmin(admin.ModelAdmin):
     search_fields = ('name', 'email', 'bio')
 
 admin.site.register(LabMember, LabMemberAdmin)
+
+
+class CarouselImageAdmin(admin.ModelAdmin):
+    list_display = ('display_instance', 'image', 'alt')
+    search_fields = ('alt',)
+
+    def display_instance(self, obj):
+        return str(obj)  # or return obj.some_field to customize what you display
+    display_instance.short_description = 'Carousel Image'  # Optional: Set a column header
+
+admin.site.register(CarouselImage, CarouselImageAdmin)
+# admin.site.register(CarouselImage)
