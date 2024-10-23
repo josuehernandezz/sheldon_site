@@ -10,7 +10,7 @@ def home(request):
     cards = Card.objects.all()
     carousel_images = CarouselImage.objects.all()
     carousel_images_with_index = [(index, image) for index, image in enumerate(carousel_images)]
-    latest_group_photo = GroupPhoto.objects.latest('id')
+    latest_group_photo = GroupPhoto.objects.order_by('-id').first()
     num_pics = carousel_images.count()
     context = {
         "title": title,
