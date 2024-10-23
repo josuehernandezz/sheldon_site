@@ -85,7 +85,6 @@ To set up this project on your local machine, follow these steps:
    source venv/bin/activate
 
    - **Windows**:
-    ```bash
    python -m venv venv
    venv\Scripts\activate
 
@@ -111,11 +110,11 @@ Make your edits on the new branch until you are ready to merge with the main bra
 
 ## Next Steps
 
-Log into the EC2 instance and fetch the latest changes:
+1. **Log into the EC2 instance and fetch the latest changes:**
     ```bash
     git fetch
     git pull origin main
 
-Restart the website with the following command:
+2. **Restart the website with the following command:**
     ```bash
     sudo systemctl restart gunicorn.service
