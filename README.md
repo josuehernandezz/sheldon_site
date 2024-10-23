@@ -80,17 +80,21 @@ To set up this project on your local machine, follow these steps:
 
 2. **Create and activate the virtual environment**:
    - **MacOS/Linux**:
+   ```bash
    python - m venv venv
    source venv/bin/activate
 
    - **Windows**:
+    ```bash
    python -m venv venv
    venv\Scripts\activate
 
 3. **Install Dependencies**:
+    ```bash
     pip install -r requirements.txt
 
 4. **Change Directory and Start the Development Server**:
+    ```bash
     cd project_container
     python manage.py runserver
 
@@ -99,6 +103,7 @@ To set up this project on your local machine, follow these steps:
 Editing the software is recommended only for those proficient in the technologies mentioned previously. If you wish to make updates to the website, it is advisable to create a new branch to ensure your changes do not affect the main website. Once you are satisfied with your edits, you can merge the branch into the main branch.
 
 1. **To Create and Switch to a New Branch:**
+    ```bash
     git branch NameOfFeatureBeingAdded
     git switch NameOfFeatureBeingAdded
 
@@ -107,8 +112,10 @@ Make your edits on the new branch until you are ready to merge with the main bra
 ## Next Steps
 
 Log into the EC2 instance and fetch the latest changes:
+    ```bash
     git fetch
     git pull origin main
 
 Restart the website with the following command:
+    ```bash
     sudo systemctl restart gunicorn.service
