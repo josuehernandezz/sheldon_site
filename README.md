@@ -8,8 +8,6 @@ Hello future lab member! My name is Josue C. Hernandez, and I built this site in
 2. [Installation](#installation)
 3. [Usage](#usage)
 4. [Next Steps](#next-steps)
-5. [Contributing](#contributing)
-6. [License](#license)
 
 ## Introduction
 
