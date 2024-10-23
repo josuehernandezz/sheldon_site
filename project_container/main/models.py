@@ -34,6 +34,7 @@ class CarouselImage(models.Model):
 
 class LabMember(models.Model):
     TITLES = [
+        ('Undergraduate', 'Undergraduate'),
         ('MS', 'Masters'),
         ('Ph.D Student', 'Ph.D Student'),
         ('Ph.D Candidate', 'Ph.D Candidate'),
@@ -83,6 +84,9 @@ class GroupPhoto(models.Model):
     def delete(self):
         self.image.delete()
         super().delete()
+
+    def str(self):
+        return self.name
 
 class Funding(models.Model):
     name = models.CharField(max_length=100, blank=False, null=False)

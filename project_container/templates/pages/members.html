@@ -11,7 +11,6 @@
 
 <div class="container mx-auto px-4 py-8">
     <h2 class="text-3xl font-semibold mb-4 text-uci-blue-dk">Principal Investigator</h2>
-    
     <div class="flex flex-wrap">
         <div class="flex mb-10 w-full md:w-1/4">
             <div class="w-full border dark:bg-slate-900 border-gray-200 shadow-md rounded-md overflow-scroll" style="height: 100%;">
@@ -24,7 +23,6 @@
                 </div>
             </div>
         </div>
-
     </div>
     
     <h2 class="text-3xl font-semibold mb-4 text-uci-blue-dk">Graduate Students</h2>
@@ -41,6 +39,24 @@
         </div>
         {% endfor %}
     </div>
-</div>
 
+    {% if current_undergrads %}
+    <h2 class="mt-8 text-3xl font-semibold mb-4 text-uci-blue-dk">Undergraduate Students</h2>
+    <div class="grid grid-cols-1 gap-3 md:grid-cols-3">
+        {% for current_undergrad in current_undergrads %}
+        <div class="border dark:bg-slate-900 border-gray-200 shadow-md rounded-md overflow-scroll" style="height: 100%;">
+            <img class="w-full h-72 object-cover" src="{{ current_undergrad.image.url }}" alt="{{ current_lab_member.name }} Image">
+            <div class="p-4">
+                <h3 class="text-xl dark:text-uci-white font-semibold mb-2">{{ current_undergrad.name }}</h3>
+                {% if current_undergrad.title %}
+                <p class="text-gray-600 dark:text-slate-300 text-sm mb-2">{{ current_undergrad.title }}</p>
+                {% endif %}
+                <p class="mb-2"><a href="mailto:{{ current_lab_member.email }}" class="text-blue-500">{{ current_undergrad.email }}</a></p>
+                <p class="mb-4 dark:text-uci-white">{{ current_undergrad.bio }}</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+</div>
 {% endblock %}

@@ -44,11 +44,13 @@ def publications(request):
 
 def members(request):
     title = 'members'
-    current_lab_members = LabMember.objects.filter(is_alumni=False).order_by('year_joined')
+    current_lab_members = LabMember.objects.filter(is_alumni=False).filter(position='GR').order_by('year_joined')
+    current_undergrads = LabMember.objects.filter(is_alumni=False).filter(position='UG').order_by('year_joined')
     principal_investigator = LabMember.objects.filter(title='Principal Investigator')[0]
     context = {
         "title": title,
         'current_lab_members': current_lab_members,
+        'current_undergrads': current_undergrads,
         'principal_investigator': principal_investigator
     }
     
