@@ -8,6 +8,9 @@ from django.utils import timezone
 
 class PageVisitAdmin(admin.ModelAdmin):
     list_display = ('url', 'formatted_visited_at', 'ip_address', 'user_agent', 'referer', 'visit_count')
+    list_filter = ('ip_address', 'user_agent', 'referer', 'visit_count', 'url',)
+
+    search_fields = ('url', 'user_agent', 'ip_address', 'referer',)
 
     def formatted_visited_at(self, obj):
         # Convert to local time using timezone.localtime

@@ -157,7 +157,7 @@ MEDIA_URL = 'media/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# COMPRESS_ENABLED = True
+COMPRESS_ENABLED = True
 # COMPRESS_OFFLINE = True
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
