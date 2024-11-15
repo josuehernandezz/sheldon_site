@@ -1,0 +1,32 @@
+
+<div class="relative overflow-x-auto border-2 rounded-lg border-gray-200 dark:border-gray-700">
+    <table class="w-full text-sm text-left rtl:text-right  text-gray-500 dark:text-gray-400">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+                {% for field in url_total_visits.0 %}
+                    <th scope="col" class="px-6 py-3">
+                        {{ field }}
+                    </th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for url_visit in url_total_visits %}
+            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                <td class="px-6 py-4">
+                    {{ url_visit.url }}
+                </td>
+                <td class="px-6 py-4">
+                    {{ url_visit.total_visits }}
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="2" class="px-6 py-4 text-center text-gray-500">
+                    No page visits found.
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>

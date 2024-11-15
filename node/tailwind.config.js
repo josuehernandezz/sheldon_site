@@ -2,6 +2,7 @@
 module.exports = {
   content: [
     '../project_container/templates/**/*.html',
+    '../project_container/**/templates/**/*.html',
     '../project_container/static/**/*.js',
     './node_modules/flowbite/**/*.js'
   ],
@@ -60,6 +61,8 @@ module.exports = {
     },
   },
   plugins: [
-    require('flowbite/plugin')
+    require('flowbite/plugin')({
+      charts: true,
+  }),
   ],
 }

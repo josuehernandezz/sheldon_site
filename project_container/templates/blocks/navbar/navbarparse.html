@@ -21,7 +21,7 @@
             <ul class="py-2 text-sm text-gray-700 dark:text-gray-400" aria-labelledby="dropdownLargeButton">
                 {% for member, url in member_dropdown_items %}
                 <li>
-                    <a href="{{ url }}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                    <a href="{% url url %}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
                         {{ member }}
                     </a>
                 </li>
@@ -31,7 +31,7 @@
     </li>
     {% else %}
         <div>
-            <a href="{{ url }}" 
+            <a href="{% url url %}" 
                 class="block rounded py-2 px-3 md:p-1
                 hover:bg-uci-blue-lt
                 

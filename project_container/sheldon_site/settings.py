@@ -41,6 +41,7 @@ ALLOWED_HOSTS = [
 ]
 if DEBUG:
     ALLOWED_HOSTS = [
+        '*',
         '127.0.0.1',
         '0.0.0.0',
         'localhost'
@@ -59,6 +60,7 @@ INSTALLED_APPS = [
     # Post
     'compressor',
     'main',
+    'page_visits'
 ]
 
 MIDDLEWARE = [
@@ -69,6 +71,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'page_visits.middleware.TrackPageVisitsMiddleware',
     "whitenoise.middleware.WhiteNoiseMiddleware",
 ]
 
@@ -129,7 +132,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Los_Angeles'
 
 USE_I18N = True
 
