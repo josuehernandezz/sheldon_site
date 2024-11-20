@@ -51,22 +51,28 @@
         
         
         {% if publication.journal %}
-          <em class="ml-2 font-semibold">{{ publication.journal }}</em>
-          {% if publication.year %}
-            {{ publication.year }},
-          {% endif %}
-          {% if publication.volume %}
-            {{ publication.volume }},
-          {% endif %}
-          {% if publication.issue %}
-            ( {{ publication.issue }} ),
-          {% endif %}
-          {% if publication.pages %}
-            {{ publication.pages }}
-          {% endif %}
-        {% else %}
-          <em class="ml-2 font-semibold">(submitted)</em>
+        <em class="ml-2 font-semibold">{{ publication.journal }}</em>
+        
+        {% if publication.year %}
+          {{ publication.year }}{% if publication.volume or publication.issue or publication.pages %},{% endif %}
         {% endif %}
+        
+        {% if publication.volume %}
+          {{ publication.volume }}{% if publication.issue or publication.pages %},{% endif %}
+        {% endif %}
+        
+        {% if publication.issue %}
+          ({{ publication.issue }}){% if publication.pages %},{% endif %}
+        {% endif %}
+        
+        {% if publication.pages %}
+          {{ publication.pages }}
+        {% endif %}
+        
+      {% else %}
+        <em class="ml-2 font-semibold">(submitted)</em>
+      {% endif %}
+      
       </p>
     </li>
   {% endif %}
