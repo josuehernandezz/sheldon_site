@@ -125,6 +125,7 @@ class Publication(models.Model):
     volume = models.PositiveBigIntegerField(blank=True, null=True)
     issue = models.PositiveBigIntegerField(blank=True, null=True)
     pages = models.CharField(max_length=2000, blank=True, null=True)
+    status = models.CharField(max_length=2000, blank=True, null=True)
 
     def __str__(self):
         return self.name

@@ -27,59 +27,62 @@
     </select>
   </div>
   
-  <!-- Publications -->
-  <div class="flex container justify-center mx-auto px-4 py-8">
-    <ol id="publications-list">
-      {% for publication in publications %}
+<!-- Publications -->
+<div class="flex container justify-center mx-auto px-4 py-8">
+  <ol id="publications-list">
+    {% for publication in publications %}
+      {% if publication.authors and publication.title %}
+        <li class="mb-3" data-year="{{ publication.year }}">
+          <p class="inline dark:text-uci-white">
+            <span>
+              {{ publication.publication_number }}.
+            </span>
+              {{ publication.authors }}.
 
+              {% if publication.url %}
+                <a href="{{ publication.url }}" target="_blank" class="text-blue-500">
+                  "{{ publication.title }}"
+                </a>
+              {% else %}
+                <a href="#" class="text-red-500">
+                  "{{ publication.title }}"
+                </a>
+              {% endif %}
 
-  {% if publication.authors and publication.title %}
-    <li class="mb-3" data-year="{{ publication.year }}">
-      <p class="inline dark:text-uci-white">
-        <span>{{ publication.publication_number }}.</span>
-        {{ publication.authors }}.
+            {% if publication.journal %}
+              <em class="ml-2 font-semibold">{{ publication.journal }}</em>
 
-        {% if publication.url %}
-          <a href="{{ publication.url }}" target="_blank" class="text-blue-500">
-            "{{ publication.title }}"
-          </a>
-        {% else %}
-          <a href="#" class="text-red-500">
-            "{{ publication.title }}"
-        </a>
-        {% endif %}
-        
-        
-        {% if publication.journal %}
-        <em class="ml-2 font-semibold">{{ publication.journal }}</em>
-        
-        {% if publication.year %}
-          {{ publication.year }}{% if publication.volume or publication.issue or publication.pages %},{% endif %}
-        {% endif %}
-        
-        {% if publication.volume %}
-          {{ publication.volume }}{% if publication.issue or publication.pages %},{% endif %}
-        {% endif %}
-        
-        {% if publication.issue %}
-          ({{ publication.issue }}){% if publication.pages %},{% endif %}
-        {% endif %}
-        
-        {% if publication.pages %}
-          {{ publication.pages }}
-        {% endif %}
-        
-      {% else %}
-        <em class="ml-2 font-semibold">(submitted)</em>
+              {% if publication.year %}
+                {{ publication.year }}{% if publication.volume or publication.issue or publication.pages or publication.status %},{% endif %}
+              {% endif %}
+
+              {% if publication.volume %}
+                {{ publication.volume }}{% if publication.issue or publication.pages or publication.status %},{% endif %}
+              {% endif %}
+
+              {% if publication.issue %}
+                ({{ publication.issue }}){% if publication.pages or publication.status %},{% endif %}
+              {% endif %}
+
+              {% if publication.pages %}
+                {{ publication.pages }}{% if publication.status %},{% endif %}
+              {% endif %}
+
+              {% if publication.status %}
+                <em class="ml-2 font-semibold">{{ publication.status }}</em>
+              {% endif %}
+
+            {% else %}
+              <em class="ml-2 font-semibold">(submitted)</em>
+            {% endif %}
+
+          </p>
+        </li>
       {% endif %}
-      
-      </p>
-    </li>
-  {% endif %}
-{% endfor %}
+    {% endfor %}
+  </ol>
+</div>
 
-    </ol>
-  </div>
 </div>
 
 <script>
