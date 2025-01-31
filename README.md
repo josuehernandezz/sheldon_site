@@ -86,7 +86,7 @@ To set up this project on your local machine, follow these steps:
    - **MacOS/Linux**:
 
    ```bash
-   python - m venv venv
+   python -m venv venv
    source venv/bin/activate
 
    - **Windows**:
