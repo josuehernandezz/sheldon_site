@@ -7,7 +7,7 @@ Hello future lab member! My name is Josue C. Hernandez, and I built this site in
 1. [Introduction](#introduction)
 2. [Installation](#installation)
 3. [Usage](#usage)
-4. [Next Steps](#next-steps)
+4. [Updating the site](#pushing-updates-to-the-website)
 
 ## Introduction
 
@@ -20,14 +20,15 @@ The purpose of this code is to run our lab's website, designed to share our rese
 Before proceeding, it’s essential that the person managing the website is comfortable with the following:
 
 1. **Command Line Interface**:
+
    - **MacOS/Linux**: Use the Terminal application.
    - **Windows**: Use Windows PowerShell or Command Prompt.
-   
+
    If you’re unfamiliar with command line usage, I recommend learning these basics or having a more proficient lab member assist you.
 
 2. **Programming Knowledge**:
-   - **Python**: Familiarity with Python is necessary for working with the website.
-   - **HTML, CSS, and JavaScript**: Knowledge of these languages is important if you plan to style the site or add new pages.
+   - **Python**: Familiarity with Python is necessary for making edits to the website.
+   - **HTML, CSS (Tailwind CSS), and JavaScript**: Knowledge of these languages is important if you plan to style the site or add new pages.
 
 ## Tech Stack
 
@@ -37,7 +38,7 @@ Here’s a brief overview of the technology stack used for this website:
 - **Web Server**: Nginx.
 - **WSGI**: Gunicorn.
 - **Web Framework**: Django.
-- **Frontend Styling**: 
+- **Frontend Styling**:
   - Uses Django's built-in template logic for dynamic components.
   - Integrates TailwindCSS for easy styling.
   - Employs Django-compressor to optimize static file serving.
@@ -46,7 +47,7 @@ Here’s a brief overview of the technology stack used for this website:
 
 The site is designed to be user-friendly for non-technical users through the Sheldon Group admin panel. You can easily edit various components:
 
-- **Adding a Lab Member**: 
+- **Adding a Lab Member**:
   - Click on the "Lab Members" link to view a table of all members.
   - Edit a specific member by clicking on their name.
   - To add a new member, click the "Add Lab Member" button at the top right of the Lab Members section.
@@ -66,18 +67,22 @@ I do not recommend editing the code unless you are confident in your abilities w
 
 Thank you for being part of the lab! If you have any questions, feel free to reach out.
 
-
 ## Installation
 
 To set up this project on your local machine, follow these steps:
 
 1. **Clone the repository**:
+
    ```bash
    git clone https://github.com/josuehernandezz/sheldon_site.git
    cd sheldon_site
 
+   ```
+
 2. **Create and activate the virtual environment**:
+
    - **MacOS/Linux**:
+
    ```bash
    python - m venv venv
    source venv/bin/activate
@@ -86,33 +91,54 @@ To set up this project on your local machine, follow these steps:
    python -m venv venv
    venv\Scripts\activate
 
+   ```
+
 3. **Install Dependencies**:
-    ```bash
-    pip install -r requirements.txt
+
+   ```bash
+   pip install -r requirements.txt
+
+   ```
 
 4. **Change Directory and Start the Development Server**:
-    ```bash
-    cd project_container
-    python manage.py runserver
+   ```bash
+   cd project_container
+   python manage.py runserver
+   ```
 
 ## Usage
 
 Editing the software is recommended only for those proficient in the technologies mentioned previously. If you wish to make updates to the website, it is advisable to create a new branch to ensure your changes do not affect the main website. Once you are satisfied with your edits, you can merge the branch into the main branch.
 
 1. **To Create and Switch to a New Branch:**
-    ```bash
-    git branch NameOfFeatureBeingAdded
-    git switch NameOfFeatureBeingAdded
+   ```bash
+   git branch NameOfFeatureBeingAdded
+   git switch NameOfFeatureBeingAdded
+   ```
 
 Make your edits on the new branch until you are ready to merge with the main branch.
 
-## Next Steps
+## Pushing Updates To The Website
+
+Log into the website server using SSH.
+
+The server admin will need to give you access by having you create a secret key and having you copy your public key
+to the ~/.ssh/authoried_keys file.
+
+The link below allows you to sign in to your AWS account to access the server if there is any need to change ports for security reasons. NOTE: THIS IS ONLY RECOMMENDED IF YOU KNOW WHAT YOU ARE DOING. DO NOT MESS WITH ANYTHING YOU DON'T UNDERSTAND. THIS IS NOT REQUIRED FOR REGULAR WEBSITE MAINTENANCE.
+
+https://uci.awsapps.com/start/#/?tab=accounts Or search for "uci aws account sign in" on your favorite search engine.
 
 1. **Log into the EC2 instance and fetch the latest changes:**
-    ```bash
-    git fetch
-    git pull origin main
+
+   ```bash
+   cd ~/sheldon_site
+   git fetch
+   git pull origin main
+
+   ```
 
 2. **Restart the website with the following command:**
-    ```bash
-    sudo systemctl restart gunicorn.service
+   ```bash
+   sudo systemctl restart gunicorn.service
+   ```
