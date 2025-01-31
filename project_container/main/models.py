@@ -84,8 +84,8 @@ class LabMember(models.Model):
     TITLES = [
         ('Undergraduate', 'Undergraduate'),
         ('M.S. Student', 'M.S. Student'),
-        ('PhD Student', 'Ph.D Student'),
-        ('PhD Candidate', 'Ph.D Candidate'),
+        ('Ph.D Student', 'Ph.D Student'),
+        ('Ph.D Candidate', 'Ph.D Candidate'),
         ('M.S.', 'M.S.'),
         ('Ph.D', 'Ph.D'),
         ('Principal Investigator', 'Principal Investigator')
