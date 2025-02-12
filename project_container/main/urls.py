@@ -13,4 +13,5 @@ urlpatterns = [
     path('funding', views.funding, name='funding'),
     path('calendar', views.calendar, name='calendar'),
     path('contact-us', views.contact_us, name='contact-us'),
+    path('positions', views.positions, name='positions')
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

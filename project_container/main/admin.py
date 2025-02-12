@@ -1,6 +1,16 @@
 from django.contrib import admin
 from django.contrib.admin import AdminSite
-from .models import CarouselImage, LabMember, Publication, GroupPhoto, ContentImage, Card, Funding, FundingImg, ResearchSection
+from .models import (
+    CarouselImage, 
+    LabMember, 
+    Publication, 
+    GroupPhoto, 
+    ContentImage, 
+    Card, 
+    Funding, 
+    FundingImg, 
+    ResearchSection, 
+    HiringPosition)
 
 # Register your models here.
 
@@ -86,3 +96,9 @@ class ResearchSectionAdmin(admin.ModelAdmin):
     search_fields = ('title',)
 
 admin_site.register(ResearchSection, ResearchSectionAdmin)
+
+class HiringPositionAdmin(admin.ModelAdmin):
+    list_display = ('name',)
+    search_fields = ('name',)
+
+admin_site.register(HiringPosition, HiringPositionAdmin)

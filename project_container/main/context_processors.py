@@ -1,5 +1,7 @@
 # app/context_processors.py
 
+from .models import HiringPosition
+
 def navbar_context(request):
     # Removed Outreach
     # nav_btn_name = ["Research", "Publications", "Members", "Outreach", "Funding", "Calendar", "Contact Us"]
@@ -14,9 +16,13 @@ def navbar_context(request):
     # Removed Contact Us
     # nav_url = ["research", "publications", "members", "funding", "calendar", "contact-us"]
     
-    
     nav_item = ["Research", "Publications", "Members", "Funding", "Calendar"]
     nav_url = ["research", "publications", "members", "funding", "calendar"]
+    
+    if HiringPosition.objects.exists():
+        nav_item.append("Postdoc Positions")
+        nav_url.append("positions")
+
     nav_info = zip(nav_item, nav_url)
 
     member_type = ["Current Members", "Alumni"]

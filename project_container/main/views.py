@@ -1,5 +1,15 @@
 from django.shortcuts import render
-from .models import CarouselImage, LabMember, Publication, GroupPhoto, ContentImage, Card, Funding, FundingImg, ResearchSection
+from .models import (
+    CarouselImage, 
+    LabMember, 
+    Publication, 
+    GroupPhoto, 
+    ContentImage, 
+    Card, 
+    Funding, 
+    FundingImg, 
+    ResearchSection, 
+    HiringPosition)
 
 # Create your views here.
 
@@ -107,3 +117,14 @@ def contact_us(request):
         "title": title,
     }
     return render(request, 'pages/contact_us.html', context)
+
+def positions(request):
+    title = 'Postdoc Positions'
+
+    positions = HiringPosition.objects.all()
+
+    context = {
+        "title": title,
+        "positions": positions,
+    }
+    return render(request, 'pages/hiring.html', context)

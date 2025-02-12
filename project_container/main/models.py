@@ -144,6 +144,13 @@ class ResearchSection(models.Model):
     def __str__(self):
         return self.title
 
+class HiringPosition(models.Model):
+    name = models.CharField(max_length=200, blank=False, null=True)
+    embeded_link = models.CharField(max_length=2000, blank=False, null=False)
+
+    def __str__(self):
+        return self.name
+
 @receiver(pre_save)
 def delete_old_image(sender, instance, **kwargs):
     # Check if the model has an 'image' field
