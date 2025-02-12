@@ -11,6 +11,8 @@ from .models import (
     FundingImg, 
     ResearchSection, 
     HiringPosition)
+from django.contrib.auth.models import User, Group
+from django.contrib.auth.admin import UserAdmin, GroupAdmin
 
 # Register your models here.
 
@@ -20,6 +22,13 @@ class MyAdminSite(AdminSite):
     index_title = "Welcome to the Admin Page"
 
 admin_site = MyAdminSite(name='Sheldon Group')
+
+# Add User CRUD to admin site
+
+# Register User and Group models
+admin_site.register(User, UserAdmin)
+admin_site.register(Group, GroupAdmin)
+
 
 # 1 Card Admin View
 
