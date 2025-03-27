@@ -2,37 +2,18 @@
 
 set -e  # Exit immediately if a command fails
 
-# Load environment variables from the .env file
-if [ -f ".env" ]; then
-    echo "Loading environment variables from .env file..."
-    source .env
-else
-    echo ".env file not found, exiting script."
-    echo -e "\nMake sure to define the following variables in your .env file:"
-    echo "
-WORK_DIR=/path/to/repo/base/directory
-VENV_DIR=$WORK_DIR/venv
-PROJECT_DIR=$WORK_DIR/project_container
-PYTHON=$VENV_DIR/bin/python
-MANAGE_PY=$PROJECT_DIR/manage.py"
-    exit 1
-fi
+# Determine the directory where the script is located
+SCRIPT_DIR=$(dirname "$(realpath "$0")")
+echo "Script is located in: $SCRIPT_DIR"
 
+# Set WORK_DIR as the directory where the script is located
+WORK_DIR="$SCRIPT_DIR"
 
-# Debug: Print the loaded environment variables to check
-echo -e "\n -- Debug -- Environment variables loaded:"
-echo "WORK_DIR=$WORK_DIR"
-echo "VENV_DIR=$VENV_DIR"
-echo "PROJECT_DIR=$PROJECT_DIR"
-echo "PYTHON=$PYTHON"
-echo "MANAGE_PY=$MANAGE_PY"
-
-# Ensure WORK_DIR is set
-if [ -z "$WORK_DIR" ]; then
-  echo "ERROR: WORK_DIR is not set in the .env file. Exiting."
-  exit 1
-fi
-
+# Set other variables relative to WORK_DIR
+VENV_DIR="$WORK_DIR/venv"
+PROJECT_DIR="$WORK_DIR/project_container"
+PYTHON="$VENV_DIR/bin/python"
+MANAGE_PY="$PROJECT_DIR/manage.py"
 
 echo -e "\n -- 1 -- Changing working directory to $WORK_DIR ..."
 cd "$WORK_DIR"
