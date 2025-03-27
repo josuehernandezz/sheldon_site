@@ -18,6 +18,7 @@ MANAGE_PY=$PROJECT_DIR/manage.py"
     exit 1
 fi
 
+
 # Debug: Print the loaded environment variables to check
 echo -e "\n -- Debug -- Environment variables loaded:"
 echo "WORK_DIR=$WORK_DIR"
