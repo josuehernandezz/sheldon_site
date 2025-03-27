@@ -29,7 +29,30 @@
       {% endfor %}
     </ul>
   </div>
-  <img src="{{ fund_img.image.url }}">
+
+  {% if active_fund_imgs %}
+  <h4 class="font-bold text-xl md:text-2xl p-4">
+    Active Funding
+  </h4>
+  {% endif %}
+
+  <div class="sm:w-3/4 md:w-3/4 lg:w-2/4 pb-4">
+    {% for active_fund_img in active_fund_imgs %}
+      <img src="{{ active_fund_img.image.url }}">
+      {% endfor %}
+  </div>
+
+  {% if inactive_fund_imgs %}
+    <h4 class="font-bold text-xl md:text-2xl pt-4 pb-10">
+      Previous Funding
+    </h4>
+  {% endif %}
+  <div class="sm:w-3/4 md:w-3/4 lg:w-2/4 pb-4">
+    {% for inactive_fund_img in inactive_fund_imgs %}
+      <img src="{{ inactive_fund_img.image.url }}">
+    {% endfor %}
+  </div>
+
 </div>
 
 {% endblock %}

@@ -96,11 +96,13 @@ def outreach(request):
 def funding(request):
     title = 'funding'
     funding = Funding.objects.all()
-    fund_img = FundingImg.objects.all()[0]
+    active_fund_imgs = FundingImg.objects.filter(is_active=True)
+    inactive_fund_imgs = FundingImg.objects.filter(is_active=False)
     context = {
         "title": title,
         "funding": funding,
-        "fund_img": fund_img,
+        "active_fund_imgs": active_fund_imgs,
+        "inactive_fund_imgs": inactive_fund_imgs,
     }
     return render(request, 'pages/funding.html', context)
 

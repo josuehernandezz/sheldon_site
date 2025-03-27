@@ -59,6 +59,7 @@ class Funding(models.Model):
 class FundingImg(models.Model):
     name = models.CharField(max_length=200, blank=False, null=False)
     image = models.ImageField(upload_to=content_img, blank=False, null=False)
+    is_active = models.BooleanField(null=True, blank=False, default=False)
 
     def delete(self):
         self.image.delete()
