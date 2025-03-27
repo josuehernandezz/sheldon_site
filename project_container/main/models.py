@@ -51,10 +51,10 @@ class CarouselImage(models.Model):
 class Funding(models.Model):
     name = models.CharField(max_length=100, blank=False, null=False)
     funding_source = models.CharField(max_length=2000, blank=False, null=False)
-        
+    is_active = models.BooleanField(null=True, blank=False, default=False)
     def __str__(self):
         return self.name
-    
+
 # Has Image
 class FundingImg(models.Model):
     name = models.CharField(max_length=200, blank=False, null=False)
