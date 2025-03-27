@@ -1,6 +1,8 @@
 # app/context_processors.py
 
 from .models import HiringPosition
+from datetime import datetime
+from django.conf import settings
 
 def navbar_context(request):
     # Removed Outreach
@@ -32,4 +34,9 @@ def navbar_context(request):
     return {
         "nav_info": nav_info,
         "member_dropdown_items" : member_dropdown_items
+    }
+
+def global_settings(request):
+    return {
+        "CURRENT_YEAR": datetime.now().year,  # Dynamic current year
     }
