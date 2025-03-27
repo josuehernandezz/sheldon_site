@@ -32,6 +32,7 @@ if [ -z "$WORK_DIR" ]; then
   exit 1
 fi
 
+
 echo -e "\n -- 1 -- Changing working directory to $WORK_DIR ..."
 cd "$WORK_DIR"
 
