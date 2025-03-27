@@ -18,6 +18,20 @@ MANAGE_PY=$PROJECT_DIR/manage.py"
     exit 1
 fi
 
+# Debug: Print the loaded environment variables to check
+echo -e "\n -- Debug -- Environment variables loaded:"
+echo "WORK_DIR=$WORK_DIR"
+echo "VENV_DIR=$VENV_DIR"
+echo "PROJECT_DIR=$PROJECT_DIR"
+echo "PYTHON=$PYTHON"
+echo "MANAGE_PY=$MANAGE_PY"
+
+# Ensure WORK_DIR is set
+if [ -z "$WORK_DIR" ]; then
+  echo "ERROR: WORK_DIR is not set in the .env file. Exiting."
+  exit 1
+fi
+
 echo -e "\n -- 1 -- Changing working directory to $WORK_DIR ..."
 cd "$WORK_DIR"
 
