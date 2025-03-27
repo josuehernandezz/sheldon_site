@@ -184,12 +184,11 @@ The link below allows you to sign in to your AWS account to access the server if
 
 https://uci.awsapps.com/start/#/?tab=accounts Or search for "uci aws account sign in" on your favorite search engine.
 
-1. **Log into the EC2 instance and fetch the latest changes:**
+1. **Log into the EC2 instance and run the update script:**
 
    ```bash
    cd ~/sheldon_site
-   git fetch
-   git pull origin main
+   ./update.sh
 
    ```
 
