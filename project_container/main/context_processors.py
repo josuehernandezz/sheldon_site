@@ -1,28 +1,14 @@
 # app/context_processors.py
 
-from .models import HiringPosition
+from .models import HiringPosition, PostDocHelpLink
 from datetime import datetime
-from django.conf import settings
 
 def navbar_context(request):
-    # Removed Outreach
-    # nav_btn_name = ["Research", "Publications", "Members", "Outreach", "Funding", "Calendar", "Contact Us"]
-    
-    # Removed Contact Us
-    # nav_btn_name = ["Research", "Publications", "Members", "Funding", "Calendar", "Contact Us"]
-    
-    
-    # Removed Outreach
-    # nav_url = ["research", "publications", "members", "outreach", "funding", "calendar", "contact-us"]
-    
-    # Removed Contact Us
-    # nav_url = ["research", "publications", "members", "funding", "calendar", "contact-us"]
-    
     nav_item = ["Research", "Publications", "Members", "Funding", "Calendar"]
     nav_url = ["research", "publications", "members", "funding", "calendar"]
     
-    if HiringPosition.objects.exists():
-        nav_item.append("Postdoc Positions")
+    if HiringPosition.objects.exists() or PostDocHelpLink.objects.exists():
+        nav_item.append("Work With Us")
         nav_url.append("positions")
 
     nav_info = zip(nav_item, nav_url)

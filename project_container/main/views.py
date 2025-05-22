@@ -9,7 +9,9 @@ from .models import (
     Funding, 
     FundingImg, 
     ResearchSection, 
-    HiringPosition)
+    HiringPosition,
+    PostDocHelpLink
+    )
 
 # Create your views here.
 
@@ -121,12 +123,16 @@ def contact_us(request):
     return render(request, 'pages/contact_us.html', context)
 
 def positions(request):
-    title = 'Postdoc Positions'
+    title = 'Postdoctoral Positions'
+    sub_title = 'Funding Opportunities for Prospective Postdoctoral Researchers'
 
     positions = HiringPosition.objects.all()
+    post_doc_help_links = PostDocHelpLink.objects.all()
 
     context = {
         "title": title,
         "positions": positions,
+        "post_doc_help_links": post_doc_help_links,
+        "sub_title": sub_title
     }
     return render(request, 'pages/hiring.html', context)

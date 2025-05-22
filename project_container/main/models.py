@@ -152,6 +152,14 @@ class HiringPosition(models.Model):
     def __str__(self):
         return self.name
 
+class PostDocHelpLink(models.Model):
+    name = models.CharField(max_length=500, blank=False, null=False)
+    link = models.CharField(max_length=2000, blank=False, null=False)
+    due_date = models.CharField(max_length=200, blank=True, null=True)
+    
+    def __str__(self):
+        return self.name
+
 @receiver(pre_save)
 def delete_old_image(sender, instance, **kwargs):
     # Check if the model has an 'image' field

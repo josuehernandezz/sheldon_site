@@ -10,7 +10,8 @@ from .models import (
     Funding, 
     FundingImg, 
     ResearchSection, 
-    HiringPosition)
+    HiringPosition,
+    PostDocHelpLink)
 from django.contrib.auth.models import User, Group
 from django.contrib.auth.admin import UserAdmin, GroupAdmin
 
@@ -111,3 +112,9 @@ class HiringPositionAdmin(admin.ModelAdmin):
     search_fields = ('name',)
 
 admin_site.register(HiringPosition, HiringPositionAdmin)
+
+class PostDocHelpLinkAdmin(admin.ModelAdmin):
+    list_display = ('name',)
+    search_fields = ('name',)
+
+admin_site.register(PostDocHelpLink, PostDocHelpLinkAdmin)
