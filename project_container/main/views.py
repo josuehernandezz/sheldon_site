@@ -71,7 +71,7 @@ def alumni(request):
     title = 'alumni'
     # Query all lab members
     post_docs = LabMember.objects.filter(is_alumni=True).filter(position='PD').order_by('-year_joined')
-    grads = LabMember.objects.filter(is_alumni=True).filter(position='GR').order_by('-year_joined')
+    grads = LabMember.objects.filter(is_alumni=True, position='GR').order_by('-year_finished', '-year_joined')
     undergrads = LabMember.objects.filter(is_alumni=True).filter(position='UG').order_by('-year_joined')
     high_schoolers = LabMember.objects.filter(is_alumni=True).filter(position='HS').order_by('-year_joined')
 
